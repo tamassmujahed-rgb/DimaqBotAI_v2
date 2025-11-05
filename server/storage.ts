@@ -30,8 +30,10 @@ export class MemStorage implements IStorage {
     const id = randomUUID();
     const conversation: Conversation = {
       id,
-      ...insertConversation,
+      telegramUserId: insertConversation.telegramUserId,
+      telegramUsername: insertConversation.telegramUsername || null,
       context: insertConversation.context || [],
+      lastMessageAt: insertConversation.lastMessageAt || new Date(),
       createdAt: new Date(),
     };
     this.conversations.set(id, conversation);
