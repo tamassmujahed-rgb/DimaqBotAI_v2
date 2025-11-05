@@ -1,37 +1,63 @@
-import { type User, type InsertUser } from "@shared/schema";
+import { type Conversation, type InsertConversation, type BotStats, type InsertBotStats } from "@shared/schema";
 import { randomUUID } from "crypto";
 
-// modify the interface with any CRUD methods
-// you might need
-
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  // Conversation management
+  getConversation(telegramUserId: string): Promise<Conversation | undefined>;
+  createConversation(conversation: InsertConversation): Promise<Conversation>;
+  updateConversationContext(telegramUserId: string, context: any[]): Promise<Conversation | undefined>;
+  
+  // Bot statistics
+  createBotStats(stats: InsertBotStats): Promise<BotStats>;
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<string, User>;
+  private conversations: Map<string, Conversation>;
+  private botStats: Map<string, BotStats>;
 
   constructor() {
-    this.users = new Map();
+    this.conversations = new Map();
+    this.botStats = new Map();
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
+  async getConversation(telegramUserId: string): Promise<Conversation | undefined> {
+    return Array.from(this.conversations.values()).find(
+      (conv) => conv.telegramUserId === telegramUserId,
     );
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
+  async createConversation(insertConversation: InsertConversation): Promise<Conversation> {
     const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+    const conversation: Conversation = {
+      id,
+      ...insertConversation,
+      context: insertConversation.context || [],
+      createdAt: new Date(),
+    };
+    this.conversations.set(id, conversation);
+    return conversation;
+  }
+
+  async updateConversationContext(telegramUserId: string, context: any[]): Promise<Conversation | undefined> {
+    const conversation = await this.getConversation(telegramUserId);
+    if (conversation) {
+      conversation.context = context;
+      conversation.lastMessageAt = new Date();
+      this.conversations.set(conversation.id, conversation);
+      return conversation;
+    }
+    return undefined;
+  }
+
+  async createBotStats(insertStats: InsertBotStats): Promise<BotStats> {
+    const id = randomUUID();
+    const stats: BotStats = {
+      id,
+      ...insertStats,
+      executedAt: new Date(),
+    };
+    this.botStats.set(id, stats);
+    return stats;
   }
 }
 
