@@ -3,125 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>دماغ رقمي | Dimaq Digital</title>
+  <title>دماغ رقمي 🌐</title>
   <style>
     body {
-      margin: 0;
-      font-family: "Cairo", sans-serif;
-      background: linear-gradient(135deg, #0d1117, #1a1f29);
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .container {
+      background-color: #0f0f0f;
+      color: #f8fafc;
+      font-family: 'Tajawal', sans-serif;
       text-align: center;
-      z-index: 2;
+      padding: 60px 20px;
     }
-
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #00f5ff, #ff00f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 3s ease-in-out infinite;
+      color: #00ffff;
+      font-size: 2.8em;
     }
-
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 10px #00f5ff; }
-      50% { text-shadow: 0 0 20px #ff00f7; }
-    }
-
     p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 30px;
+      font-size: 1.2em;
+      color: #b8b8b8;
+      margin-top: 15px;
     }
-
-    a.button {
-      background: #00f5ff;
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #00ffff;
       color: #000;
+      border-radius: 12px;
       text-decoration: none;
-      padding: 12px 30px;
-      border-radius: 50px;
       font-weight: bold;
-      transition: all 0.3s ease;
+      transition: 0.3s;
     }
-
-    a.button:hover {
-      background: #ff00f7;
-      color: #fff;
+    a:hover {
+      background: #09e3e3;
     }
-
-    /* خلفية متحركة */
-    .bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
-      background-size: 50px 50px;
-      animation: move 8s linear infinite;
-    }
-
-    @keyframes move {
-      from { background-position: 0 0; }
-      to { background-position: 100px 100px; }
+    footer {
+      margin-top: 50px;
+      opacity: 0.7;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <div class="bg"></div>
-  <div class="container">
-    <h1>دمـاغ رقـمي</h1>
-    <p>منصة تجمع بين الإبداع والذكاء الاصطناعي لبناء مستقبل رقمي متطور.</p>
-    <a href="#" class="button">ابدأ الآن</a>
-  </div>
-  <!-- شاشة تحميل شعار دماغ رقمي -->
-<div id="loader">
-  <h1 class="logo">دماغ رقمي</h1>
-</div>
-
-<script>
-  const loader = document.getElementById("loader");
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      loader.style.opacity = "0";
-      loader.style.pointerEvents = "none";
-    }, 1500);
-  });
-</script>
-
-<style>
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0d1129;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 1s ease;
-}
-
-.logo {
-  font-size: 3.5rem;
-  background: linear-gradient(90deg, #00f5ff, #ff0077);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glowText 2s ease-in-out infinite;
-}
-
-@keyframes glowText {
-  0%, 100% { text-shadow: 0 0 10px #00f5ff; }
-  50% { text-shadow: 0 0 20px #ff0077; }
-}
-</style>
+  <h1>🚀 دماغ رقمي</h1>
+  <p>منصة تجمع بين الإبداع والذكاء الاصطناعي لتطوير المحتوى الرقمي.</p>
+  <a href="https://t.me/DimaqDigital" target="_blank">تابعنا على تليجرام</a>
+  <footer>© 2025 دماغ رقمي - جميع الحقوق محفوظة</footer>
 </body>
 </html>
