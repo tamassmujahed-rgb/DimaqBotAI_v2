@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ذكاء دماغ رقمي | Dimaq AI</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(135deg, #0d1129, #1a1f49);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .chat-container {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 95%;
+      max-width: 500px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .chat-header {
+      text-align: center;
+      padding: 15px;
+      background: linear-gradient(90deg, #00f5ff, #ff0077);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg {
+      padding: 10px 15px;
+      border-radius: 12px;
+      max-width: 85%;
+      line-height: 1.5;
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .user {
+      background: #00f5ff;
+      color: #000;
+      align-self: flex-end;
+    }
+
+    .bot {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      align-self: flex-start;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .chat-input button {
+      background: linear-gradient(90deg, #00f5ff, #ff0077);
+      border: none;
+      color: #fff;
+      padding: 0 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .chat-input button:hover {
+      filter: brightness(1.2);
+    }
+
+    /* شريط التحميل عند بدء الصفحة */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0d1129;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+
+    .logo {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #00f5ff, #ff0077);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 2s ease-in-out infinite;
+    }
+
+    @keyframes glowText {
+      0%, 100% { text-shadow: 0 0 10px #00f5ff; }
+      50% { text-shadow: 0 0 20px #ff0077; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader">
+    <h1 class="logo">دماغ رقمي ⚡</h1>
+  </div>
+
+  <div class="chat-container" id="chatBox" style="display:none;">
+    <div class="chat-header">🤖 ذكاء دماغ رقمي</div>
+    <div class="chat-messages" id="messages"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="اكتب سؤالك هنا..." />
+      <button onclick="sendMessage()">إرسال</button>
+    </div>
+  </div>
+
+  <script>
+    // شاشة التحميل
+    const loader = document.getElementById("loader");
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        loader.style.pointerEvents = "none";
+        document.getElementById("chatBox").style.display = "flex";
+      }, 1200);
+    });
+
+    // محاكاة الذكاء الاصطناعي
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const msg = input.value.trim();
+      if (msg === "") return;
+
+      addMessage(msg, "user");
+      input.value = "";
+
+      setTimeout(() => {
+        addMessage("تحليل... 🤔", "bot");
+        setTimeout(() => {
+          document.querySelector(".bot:last-child").innerText =
+            "الإجابة من دماغ رقمي: \"" + generateReply(msg) + "\" ⚡";
+        }, 1500);
+      }, 500);
+    }
+
+    function addMessage(text, sender) {
+      const msgDiv = document.createElement("div");
+      msgDiv.classList.add("msg", sender);
+      msgDiv.innerText = text;
+      document.getElementById("messages").appendChild(msgDiv);
+      msgDiv.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function generateReply(message) {
+      const responses = [
+        "فكرة ممتازة 👌",
+        "سأقوم بتحليلها بعمق 🔍",
+        "أعطني لحظة لتوليد الإجابة 💡",
+        "جميل جدًا! هل تريد تطويرها أكثر؟ 🚀",
+        "أظن أن هذه بداية قوية 🔥"
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
+    }
+  </script>
+</body>
+</html>
