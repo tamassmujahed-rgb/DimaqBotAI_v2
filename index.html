@@ -6,6 +6,134 @@
     <title>Dimaq AI - محرك الإبداع العربي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* إضافة تنسيقات بسيطة لضمان مظهر الواجهة الجذاب */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0d1117; /* خلفية داكنة */
+            color: #c9d1d9; /* لون النص الفاتح */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        header {
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: #ffd33d; /* لون ذهبي لامع */
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #8b949e;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #a8a8a8;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background-color: #161b22;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            width: 30%;
+            min-width: 250px;
+            text-align: right;
+            border-top: 2px solid #ffd33d;
+        }
+
+        .feature-box h3 {
+            font-size: 1.4rem;
+            color: #ffd33d;
+            margin-bottom: 10px;
+        }
+
+        .feature-box p {
+            font-size: 0.95rem;
+            color: #c9d1d9;
+        }
+
+        .cta {
+            margin-top: 50px;
+            padding-bottom: 40px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button.primary {
+            background-color: #ffd33d;
+            color: #0d1117;
+        }
+
+        .button.primary:hover {
+            background-color: #ffc400;
+            transform: translateY(-2px);
+        }
+
+        .button.secondary {
+            background-color: transparent;
+            color: #ffd33d;
+            border: 2px solid #ffd33d;
+        }
+
+        .button.secondary:hover {
+            background-color: #ffd33d1a;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid #21262d;
+            width: 100%;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+
+        /* تنسيقات لجعل الصفحة تملأ الشاشة عمودياً */
+        html, body {
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 
@@ -36,7 +164,7 @@
         </section>
 
         <section class="cta">
-            <a href="#" class="button primary">ابدأ استخدام البوت الآن 🚀</a>
+            <a href="./app/page.jsx" class="button primary">ابدأ استخدام البوت الآن 🚀</a>
             <a href="#" class="button secondary">احصل على "دليل الأوامر الذهبية" كاملاً</a>
         </section>
     </main>
